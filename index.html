@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test IP</title>
+</head>
+<body>
+  <h1>Test d'adresse IP</h1>
+
+  <p>
+    En cliquant sur le bouton, votre adresse IP sera affichée
+    pour les besoins de ce test.
+  </p>
+
+  <button onclick="afficherIP()">Afficher mon IP</button>
+
+  <p id="resultat"></p>
+
+  <script>
+    async function afficherIP() {
+      const reponse = await fetch("https://api.ipify.org?format=json");
+      const donnees = await reponse.json();
+
+      document.getElementById("resultat").textContent =
+        "Votre adresse IP est : " + donnees.ip;
+    }
+  </script>
+</body>
+</html>
